@@ -4,7 +4,7 @@ class DB extends PDO
 {
     public function __construct()
     {
-        $con = "mysql:host=localhost;dbname=videos";
-        parent::__construct($con, "root", "");
+        $con = "mysql:host=bbdd.wilberulloa-cei.com;dbname=ddb192585";
+        parent::__construct($con, "ddb192585", "Jarvis20507!");
     }
 }
