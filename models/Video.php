@@ -16,4 +16,12 @@ class Video extends DB {
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
+    public static function find($id)
+    {
+        $db = new DB();
+        $prepare = $db->prepare("SELECT * FROM Video WHERE id=:id");
+        $prepare->execute([":id" => $id]);
+        return $prepare->fetchObject(Video::class);
+    }
+
 }
