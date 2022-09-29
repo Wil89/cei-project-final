@@ -10,7 +10,7 @@ class VideosController
         echo json_encode($videos);
     }
 
-    public function detail($id)
+    public function details($id)
     {
         $video = Video::find($id);
         echo json_encode($video);
@@ -25,9 +25,14 @@ class VideosController
             http_response_code(400);
             exit;
         }
-        $video = new Video($data->name, $data->imagenUrl, $data->videoUrl, $data->postDate);
+        $video = new Video();
+        $video->name = $data->name;
+        $video->imagenUrl = $data->imagenUrl;
+        $video->videoUrl = $data->videoUrl;
+        $video->postDate = $data->postDate;
         $video->save();
-        echo json_encode($video);
+        $response = $video;
+        echo json_encode($response);
     }
 
     public function update($id)

@@ -8,14 +8,6 @@ class Video extends DB {
     public $videoUrl;
     public $postDate;
 
-    public function __construct($name, $imagenUrl, $videoUrl, $postDate)
-    {
-        $this->name = $name;
-        $this->imagenUrl = $imagenUrl;
-        $this->videoUrl = $videoUrl;
-        $this->postDate = $postDate;
-    }
-
     public static function all()
     {
         $db = new DB();
