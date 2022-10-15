@@ -45,9 +45,6 @@ class Video extends DB {
             $prepare = $this->prepare("UPDATE Video SET name=:name, imagenUrl=:imagenUrl, videoUrl=:videoUrl, postDate=:postDate WHERE id=:id");
             $prepare->execute($params);
         } 
-        
-
-
     }
 
     public function remove()
