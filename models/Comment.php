@@ -35,15 +35,15 @@ class Comment extends DB
         $prepare->execute([":id" => $this->id]);
     }
 
-    public function save($videoId, $userId)
+    public function save()
     {
         $params = [
             ":comment"=> $this->comment, 
             ":date" => $this->date, 
             ":voteUp" => $this->voteUp,
             ":voteDown" => $this->voteDown,
-            ":Video_id" => $videoId,
-            ":User_id" => $userId
+            ":Video_id" => $this->videoId,
+            ":User_id" => $this->userId
         ];
         // Si no esta presente el id, es que estamos creando un nuevo commentario
         if (empty($this->id)) {
