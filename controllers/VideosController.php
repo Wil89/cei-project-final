@@ -7,7 +7,8 @@ class VideosController
     public function index()
     {
         $videos = Video::all();
-        echo json_encode($videos);
+        view("videos.index", ["videos"=> $videos]);
+        // echo json_encode($videos);
     }
 
     public function details($id)
