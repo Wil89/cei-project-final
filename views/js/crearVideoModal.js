@@ -38,7 +38,7 @@ crearVideoModal = () => {
   const videoUrl = document.querySelector("#videoUrl");
 
   const actionBtn = document.querySelector(".btn-subir");
-  actionBtn.addEventListener("click", async () => {
+  actionBtn.addEventListener("click", () => {
     const postDate = new Date().toISOString().slice(0, 10);
 
     const url = videoUrl.value.split("src=")[1].split("title=")[0].trim();
@@ -54,19 +54,23 @@ crearVideoModal = () => {
     };
 
     console.log(data);
-    try {
-      const responseJson = await fetch("/videos/create", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    fetch("/videos/create", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log(response);
 
-      const response = await responseJson.json();
-      console.log(response);
-    } catch (error) {
-        alert("Video Repetido");
-    }
+        if (response.ok) {
+          return response.json();
+        } else if (response.status === 400) {
+          alert("Video Repetido");
+        }
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   });
 };

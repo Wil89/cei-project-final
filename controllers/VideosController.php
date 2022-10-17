@@ -31,7 +31,7 @@ class VideosController
         $videos = Video::all();
         foreach($videos as $video)
         {
-            if($video->name == $data->name){
+            if($video->videoUrl == $data->videoUrl){
                 http_response_code(400);
                 exit;
             }
