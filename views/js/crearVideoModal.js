@@ -62,15 +62,15 @@ crearVideoModal = () => {
       },
     })
       .then((response) => {
-        console.log(response);
-
         if (response.ok) {
-          return response.json();
+          // Recargar la pagina para mostrar las nuevas entradas
+          window.location.reload();
         } else if (response.status === 400) {
+          // Si el status code es 400 es q ya tenemos ese video en la DB
           alert("Video Repetido");
+          return;
         }
       })
-      .then((data) => console.log(data))
       .catch((error) => console.log(error));
   });
 };
