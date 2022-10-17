@@ -26,6 +26,17 @@ class VideosController
             http_response_code(400);
             exit;
         }
+
+        // Evitar videos repetidos
+        $videos = Video::all();
+        foreach($videos as $video)
+        {
+            if($video->name == $data->name){
+                http_response_code(400);
+                exit;
+            }
+        }
+
         $video = new Video();
         $video->name = $data->name;
         $video->imagenUrl = $data->imagenUrl;
