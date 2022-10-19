@@ -18,7 +18,21 @@
     include_once("./views/common/navbar.php");
     ?>
   </header>
+  <!-- Modal para subir video -->
   <div id="modal-subir-video"></div>
+  <!-- Toast -->
+  <div class="toast-container position-absolute top-[56px] end-0 p-3 z-1">
+    <div id="alert-toast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido -->
   <div class="container">
     <div class="row row-cols-auto">
       <?php foreach ($videos as $video) : ?>

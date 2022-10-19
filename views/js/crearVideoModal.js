@@ -34,11 +34,16 @@ crearVideoModal = () => {
   let modal = new bootstrap.Modal(document.getElementById("createModal"));
   modal.show();
 
+  // Mensaje Toast
+  const toast = document.querySelector("#alert-toast");
+  const toastBody = document.querySelector(".toast-body");
+
   const name = document.querySelector("#name");
   const videoUrl = document.querySelector("#videoUrl");
 
   const actionBtn = document.querySelector(".btn-subir");
   actionBtn.addEventListener("click", () => {
+    const toastMsg = new bootstrap.Toast(toast);
     const postDate = new Date().toISOString().slice(0, 10);
 
     const url = videoUrl.value.split("src=")[1].split("title=")[0].trim();
@@ -65,9 +70,13 @@ crearVideoModal = () => {
         if (response.ok) {
           // Recargar la pagina para mostrar las nuevas entradas
           window.location.reload();
+          toastBody.innerHTML = "Video subido satisfactoriamente.";
+          toastMsg.show();
         } else if (response.status === 400) {
           // Si el status code es 400 es q ya tenemos ese video en la DB
-          alert("Video Repetido");
+          // alert("Video Repetido");
+          toastBody.innerHTML = "<p>El Video ya existe.</p>";
+          toastMsg.show();
           return;
         }
       })
