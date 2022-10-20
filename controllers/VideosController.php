@@ -14,7 +14,8 @@ class VideosController
     public function details($id)
     {
         $video = Video::find($id);
-        echo json_encode($video);
+        view("videos.details", ["video"=> $video]);
+        // echo json_encode($video);
     }
 
     public function create()
