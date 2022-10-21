@@ -1,17 +1,26 @@
 <?php
 include_once "models/DB.php";
 
-class Video extends DB {
+class Video extends DB
+{
     public $id;
     public $name;
     public $imagenUrl;
     public $videoUrl;
     public $postDate;
 
-    public static function all()
+    public static function all($filtro)
     {
         $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM Video");
+        $consulta = '';
+        if ($filtro) {
+            $consulta = "SELECT * FROM Video WHERE name LIKE '%${$filtro}%'";
+        } else {
+            $consulta = "SELECT * FROM Video";
+        }
+        // $consulta = "SELECT * FROM Video";
+        // echo $consulta;
+        $prepare = $db->prepare($consulta);
         $prepare->execute();
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
@@ -19,16 +28,17 @@ class Video extends DB {
     public static function find($id)
     {
         $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM Video WHERE id=:id");
+        $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.id = c.Video_id WHERE v.id=:id");
         $prepare->execute([":id" => $id]);
-        return $prepare->fetchObject(Video::class);
+        // var_dump($prepare);
+        return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
     public function save()
     {
         $params = [
-            ":name"=> $this->name, 
-            ":postDate" => $this->postDate, 
+            ":name" => $this->name,
+            ":postDate" => $this->postDate,
             ":imagenUrl" => $this->imagenUrl,
             ":videoUrl" => $this->videoUrl,
         ];
@@ -44,13 +54,12 @@ class Video extends DB {
             $params[":id"] = $this->id;
             $prepare = $this->prepare("UPDATE Video SET name=:name, imagenUrl=:imagenUrl, videoUrl=:videoUrl, postDate=:postDate WHERE id=:id");
             $prepare->execute($params);
-        } 
+        }
     }
 
     public function remove()
     {
-        $prepare=$this->prepare("DELETE FROM Video WHERE id=:id");
+        $prepare = $this->prepare("DELETE FROM Video WHERE id=:id");
         $prepare->execute([":id" => $this->id]);
     }
-
 }

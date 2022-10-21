@@ -4,9 +4,12 @@ include_once "models/Video.php";
 
 class VideosController
 {
-    public function index()
-    {
-        $videos = Video::all();
+    public function index($filtro)
+    {   
+        // $filtro = $_GET['filtro'] ?? null;
+        echo $filtro;
+
+        $videos = Video::all($filtro);
         view("videos.index", ["videos"=> $videos]);
         // echo json_encode($videos);
     }
@@ -14,6 +17,7 @@ class VideosController
     public function details($id)
     {
         $video = Video::find($id);
+        // var_dump($video);
         view("videos.details", ["video"=> $video]);
         // echo json_encode($video);
     }
@@ -29,7 +33,7 @@ class VideosController
         }
 
         // Evitar videos repetidos
-        $videos = Video::all();
+        $videos = Video::all(null);
         foreach($videos as $video)
         {
             if($video->videoUrl == $data->videoUrl){
@@ -58,11 +62,11 @@ class VideosController
         }
         $video = Video::find($id);
         if ($video) {
-            $video->name = $data->name;
-            $video->imagenUrl = $data->imagenUrl;
-            $video->videoUrl = $data->videoUrl;
-            $video->postDate = $data->postDate;
-            $video->save();
+            $video[0]->name = $data->name;
+            $video[0]->imagenUrl = $data->imagenUrl;
+            $video[0]->videoUrl = $data->videoUrl;
+            $video[0]->postDate = $data->postDate;
+            $video[0]->save();
             $response = $video;
             echo json_encode($response);
         } else {
@@ -77,7 +81,7 @@ class VideosController
             http_response_code(400);
             exit;
         }
-        $video->remove();
+        $video[0]->remove();
         $response = "Video eliminado";
         echo json_encode($response);
     }

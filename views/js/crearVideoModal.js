@@ -1,4 +1,16 @@
 let modalContainer = null;
+
+const formBuscar = document.querySelector("#buscarVideo");
+const inputBuscar = document.querySelector("#buscarVideoInput");
+formBuscar.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const url = `/videos/index/${inputBuscar.value}`;
+  window.location.href = url;
+  // console.log(url);
+  // fetch(url).then((response) => response.json())
+  // .then(data => console.log(data));
+});
+
 crearVideoModal = () => {
   if (modalContainer !== null) {
     modalContainer.remove();

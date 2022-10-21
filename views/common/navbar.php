@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <a class="navbar-brand">Videoteca</a>
         <div class="d-flex">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar video" aria-label="Search">
+            <form id="buscarVideo" class="d-flex">
+                <input id="buscarVideoInput" class="form-control me-2" type="search" placeholder="Buscar video" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">
                     <i class="bi bi-search"></i>
                 </button>

@@ -18,9 +18,12 @@
         include_once("./views/common/navbar.php");
         ?>
     </header>
-    <h1><?php echo $video->name ?></h1>
+    <h1><?php echo $video[0]->name ?></h1>
     <section>
-        <iframe src="<?php echo $video->videoUrl ?>" title="<?php $video->name ?>"></iframe>
+        <iframe src="<?php echo $video[0]->videoUrl ?>" title="<?php $video->name ?>"></iframe>
+        <?php foreach ($video as $video): ?>
+            <p><?php echo $video->comment ?></p>
+        <?php endforeach; ?>
     </section>
 
 </body>
