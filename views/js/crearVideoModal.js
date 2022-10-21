@@ -66,7 +66,7 @@ crearVideoModal = () => {
 
     const data = {
       name: title.substring(1, title.length - 1),
-      videoUrl: url.substring(1, url.length - 1),
+      videoUrl: videoUrl.value,
       postDate: postDate,
     };
 

@@ -37,7 +37,9 @@
     <div class="row row-cols-auto">
       <?php foreach ($videos as $video) : ?>
         <div class="col position-relative">
-          <iframe src="<?php echo $video->videoUrl ?>" title="<?php $video->name ?>"></iframe>
+          <div>
+            <?php echo $video->videoUrl ?>
+          </div>
           <a class="overlay" href="videos/details/<?php echo $video->id ?>"></a>
           <div class="row align-items-start">
             <p><?php echo $video->name ?></p>
