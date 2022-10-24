@@ -18,20 +18,31 @@
         include_once("./views/common/navbar.php");
         ?>
     </header>
-    <section class="container-fluid">
-        <div class="row align-items-center">
-            <div class="iframe-container">
-                <?php echo $video[0]->videoUrl ?>
-                <!-- <iframe class="details" src="<?php echo $video[0]->videoUrl ?>" title="<?php $video->name ?>"></iframe> -->
-            </div>
-            <h3 class=""><?php echo $video[0]->name ?></h3>
-            <p><?php echo count($video)." Comentarios" ?></p>
-            <?php foreach ($video as $video) : ?>
-                <p><?php echo $video->comment ?></p>
-            <?php endforeach; ?>
-        </div>
+    <section class="main-container">
+        <div class="container-xl">
+            <div class="row align-items-center">
+                <div class="iframe-container">
+                    <?php echo $video[0]->videoUrl ?>
+                    <!-- <iframe class="details" src="<?php echo $video[0]->videoUrl ?>" title="<?php $video->name ?>"></iframe> -->
+                </div>
+                <h3 class=""><?php echo $video[0]->name ?></h3>
+                <p>Comentarios: <?php
+                                if ($video[0]->comment) {
+                                  echo count($video);
+                                } else {
+                                   echo 0;
+                                }
 
+                                ?></p>
+                <!-- <p><?php echo count($video) . " Comentarios" ?></p> -->
+                <?php foreach ($video as $video) : ?>
+                    <p><?php echo $video->comment ?></p>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
     </section>
+
 
 </body>
 

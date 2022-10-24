@@ -33,21 +33,29 @@
   </div>
 
   <!-- Contenido -->
-  <div class="container">
-    <div class="row row-cols-auto">
-      <?php foreach ($videos as $video) : ?>
-        <div class="col position-relative">
-          <div>
-            <?php echo $video->videoUrl ?>
-          </div>
-          <a class="overlay" href="videos/details/<?php echo $video->id ?>"></a>
-          <div class="row align-items-start">
-            <p><?php echo $video->name ?></p>
-          </div>
-        </div>
-      <?php endforeach; ?>
+  <div class="main-container">
+    <div class="container-fluid">
+      <div class="custom-rows">
+        <?php foreach ($videos as $video) : ?>
+          <!-- <div class=""> -->
+            <div class="card">
+              <div class="card-body">
+                <div class="iframe-container position-relative">
+                  <?php echo $video->videoUrl ?>
+                </div>
+                <a class="overlay" href="videos/details/<?php echo $video->id ?>"></a>
+                <div class="row align-items-start">
+                  <p class="ellipsis"><?php echo $video->name ?></p>
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+
+        <?php endforeach; ?>
+      </div>
     </div>
   </div>
+
 
 </body>
 

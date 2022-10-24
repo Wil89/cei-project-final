@@ -30,7 +30,6 @@ class Video extends DB
         $db = new DB();
         $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.id = c.Video_id WHERE v.id=:id");
         $prepare->execute([":id" => $id]);
-        // var_dump($prepare);
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
