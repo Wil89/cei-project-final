@@ -71,6 +71,32 @@
   height: 100%;
 }
 
+/* Detail page styles */
+.details-header {
+    color: var(--bs-light);
+    margin: 1rem 0 2rem;
+    font-weight: bold;
+}
+
+.comments {
+    color: var(--bs-light);
+}
+
+.user-comment {
+    color: var(--bs-light);
+}
+
+hr {
+    background-color: var(--bs-light);
+}
+
+#createComment input[type="text"] {
+    border: none;
+    border-bottom: 1px solid var(--bs-light);
+    border-radius: unset;
+    background-color: var(--bs-dark-rgb);
+    color: var(--bs-light);
+}
 
 /* Media Queries */
 

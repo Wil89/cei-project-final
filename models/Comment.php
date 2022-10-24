@@ -42,8 +42,8 @@ class Comment extends DB
             ":date" => $this->date, 
             ":voteUp" => $this->voteUp,
             ":voteDown" => $this->voteDown,
-            ":Video_id" => $this->videoId,
-            ":User_id" => $this->userId
+            ":Video_id" => $this->Video_id,
+            ":User_id" => $this->User_id
         ];
         // Si no esta presente el id, es que estamos creando un nuevo commentario
         if (empty($this->id)) {

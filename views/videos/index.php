@@ -43,7 +43,7 @@
                 <div class="iframe-container position-relative">
                   <?php echo $video->videoUrl ?>
                 </div>
-                <a class="overlay" href="videos/details/<?php echo $video->id ?>"></a>
+                <a class="overlay" href="videos/details/<?php echo $video->videoId; ?>"></a>
                 <div class="row align-items-start">
                   <p class="ellipsis"><?php echo $video->name ?></p>
                 </div>

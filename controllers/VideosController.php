@@ -6,7 +6,6 @@ class VideosController
 {
     public function index($filtro)
     {   
-        // $filtro = $_GET['filtro'] ?? null;
         echo $filtro;
 
         $videos = Video::all($filtro);
@@ -17,7 +16,6 @@ class VideosController
     public function details($id)
     {
         $video = Video::find($id);
-        // var_dump($video);
         view("videos.details", ["video"=> $video]);
         // echo json_encode($video);
     }

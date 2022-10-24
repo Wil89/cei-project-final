@@ -3,7 +3,7 @@ include_once "models/DB.php";
 
 class Video extends DB
 {
-    public $id;
+    public $videoId;
     public $name;
     public $imagenUrl;
     public $videoUrl;
@@ -28,7 +28,7 @@ class Video extends DB
     public static function find($id)
     {
         $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.id = c.Video_id WHERE v.id=:id");
+        $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.videoId = c.Video_id WHERE v.videoId=:id");
         $prepare->execute([":id" => $id]);
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }

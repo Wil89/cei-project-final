@@ -19,6 +19,7 @@ class CommentsController
     {
         // parsear la data del post
         $data = json_decode(file_get_contents("php://input"));
+        var_dump($data);
         if (!$data) {
             // Bad Request
             http_response_code(400);

@@ -95,3 +95,43 @@ crearVideoModal = () => {
       .catch((error) => console.log(error));
   });
 };
+
+// Submit de creación de usuario
+const addComment = (id) => {
+  const commentForm = document.querySelector("#createComment");
+  const commentInput = document.querySelector("#comment");
+
+  // Mensaje Toast
+  const toast = document.querySelector("#alert-toast");
+  const toastBody = document.querySelector(".toast-body");
+  const toastMsg = new bootstrap.Toast(toast);
+
+  console.log(`Enviar ${commentInput.value} con id ${id}`);
+
+  const data = {
+    comment: commentInput.value,
+    date: new Date().toISOString().slice(0, 10),
+    videoId: parseInt(id),
+    userId: 2,
+  };
+
+  fetch("/comments/create", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log(response);
+        window.location.reload();
+        toastBody.innerHTML = "Video subido satisfactoriamente.";
+        toastMsg.show();
+      }
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
+};
