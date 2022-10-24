@@ -56,7 +56,7 @@ crearVideoModal = () => {
   const actionBtn = document.querySelector(".btn-subir");
   actionBtn.addEventListener("click", () => {
     const toastMsg = new bootstrap.Toast(toast);
-    const postDate = new Date().toISOString().slice(0, 10);
+    const postDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
     const url = videoUrl.value.split("src=")[1].split("title=")[0].trim();
     const title = videoUrl.value
@@ -81,7 +81,7 @@ crearVideoModal = () => {
       .then((response) => {
         if (response.ok) {
           // Recargar la pagina para mostrar las nuevas entradas
-          window.location.reload();
+          window.location.href = "/videos";
           toastBody.innerHTML = "Video subido satisfactoriamente.";
           toastMsg.show();
         } else if (response.status === 400) {
@@ -110,7 +110,7 @@ const addComment = (id) => {
 
   const data = {
     comment: commentInput.value,
-    date: new Date().toISOString().slice(0, 10),
+    date: new Date().toISOString().slice(0, 19).replace('T', ' '),
     videoId: parseInt(id),
     userId: 2,
   };

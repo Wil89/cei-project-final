@@ -18,6 +18,9 @@
         include_once("./views/common/navbar.php");
         ?>
     </header>
+    <!-- Modal para subir video -->
+    <?php include_once("./views/common/modal.php") ?>
+    <!-- Toast -->
     <?php include_once("./views/common/toast.php") ?>
     <section class="main-container">
         <div class="container-xl">
