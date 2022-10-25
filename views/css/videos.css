@@ -9,7 +9,9 @@
     justify-content: center;
 }
 
-
+.toast-container {
+  z-index: 3 !important;
+}
 
 .card {
   overflow: hidden;
