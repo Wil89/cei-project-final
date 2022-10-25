@@ -39,7 +39,8 @@
                                                     ?></p>
                 <hr />
                 <form id="createComment">
-                    <input id="comment" type="text" class="form-control" placeholder="Comentario">
+                    <input id="comment" type="text" class="form-control position-relative" placeholder="Comentario">
+                    <p id="error-msg" class="position-absolute">El mensaje no puede estar vacío</p>
                     <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-light mt-3 mb-3" onclick='addComment("<?php echo ($video[0]->videoId); ?>")'>Comentar</button>
                     </div>

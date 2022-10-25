@@ -2,6 +2,11 @@ let modalContainer = null;
 
 const formBuscar = document.querySelector("#buscarVideo");
 const inputBuscar = document.querySelector("#buscarVideoInput");
+const modalValidacion = document.querySelector("#error-msg");
+// Inicialización for detail page
+if (modalValidacion) {
+  modalValidacion.style.display = "none";
+}
 
 formBuscar.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -30,9 +35,9 @@ crearVideoModal = () => {
                     <div class="form-floating mb-3">
                         <input
                             type="text"
-                            class="form-control" name="url" id="videoUrl" required placeholder="Titulo del video">
+                            class="form-control position-relative" name="url" id="videoUrl" required placeholder="Titulo del video">
                         <label for="nombre">Video URL</label>
-                        <p id="error-msg"></p>
+                        <p id="modal-error-msg" class="position-absolute"></p>
                     </div>
                 </form>
             </div>
@@ -48,7 +53,7 @@ crearVideoModal = () => {
   let modal = new bootstrap.Modal(document.getElementById("createModal"));
   modal.show();
 
-  const modalValidacion = document.querySelector("#error-msg");
+  const modalValidacion = document.querySelector("#modal-error-msg");
   // Inicialización
   modalValidacion.style.display = "none";
 
@@ -70,13 +75,14 @@ crearVideoModal = () => {
     if (!videoUrl.value) {
       modalValidacion.style.display = "block";
       modalValidacion.style.color = "red";
-      modalValidacion.innerHTML = "Introduzca un video"
+      modalValidacion.innerHTML = "Introduzca un video";
     } else if (
       !videoUrl.value.match(/(?:<iframe[^>]*)(?:(?:\/>)|(?:>.*?<\/iframe>))/)
     ) {
       modalValidacion.style.display = "block";
       modalValidacion.style.color = "red";
-      modalValidacion.innerHTML = "El valor introducido no es una etiqueta iframe válida"
+      modalValidacion.innerHTML =
+        "El valor introducido no es una etiqueta iframe válida";
       // return;
     } else {
       modal.hide();
@@ -130,6 +136,13 @@ const addComment = (id) => {
   const toastMsg = new bootstrap.Toast(toast);
 
   console.log(`Enviar ${commentInput.value} con id ${id}`);
+
+  if (!commentInput.value) {
+    modalValidacion.style.display = "block";
+    modalValidacion.style.color = "red";
+    modalValidacion.innerHTML = "Introduzca un comentario";
+    return;
+  }
 
   const data = {
     comment: commentInput.value,
