@@ -29,7 +29,7 @@
       <div class="custom-rows">
         <?php foreach ($videos as $video) : ?>
           <!-- <div class=""> -->
-            <div class="card">
+            <div class="card card-dark">
               <div class="card-body">
                 <div class="iframe-container position-relative">
                   <?php echo $video->videoUrl ?>

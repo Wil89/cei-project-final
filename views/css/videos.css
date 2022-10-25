@@ -1,23 +1,23 @@
 :root {
-    --bs-bg-opacity: 1;
+  --bs-bg-opacity: 1;
 }
 .custom-rows {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    align-content: center;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  align-content: center;
+  justify-content: center;
 }
 
 .toast-container {
   z-index: 3 !important;
 }
 
-.card {
+.card-dark {
   overflow: hidden;
   padding: 12px;
   margin: 0.5rem;
-  background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity));
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
 }
 .card-body {
   padding: 0;
@@ -35,10 +35,10 @@
 }
 
 .main-container {
-    background-color: black;
-    padding: 1rem 0;
-    min-height: calc(100vh - 56px);
-    box-sizing: border-box;
+  background-color: black;
+  padding: 1rem 0;
+  min-height: calc(100vh - 56px);
+  box-sizing: border-box;
 }
 
 .overlay {
@@ -75,35 +75,40 @@
 
 /* Detail page styles */
 .details-header {
-    color: var(--bs-light);
-    margin: 1rem 0 2rem;
-    font-weight: bold;
+  color: var(--bs-light);
+  margin: 1rem 0 2rem;
+  font-weight: bold;
 }
 
 .comments {
-    color: var(--bs-light);
+  color: var(--bs-light);
 }
 
 .user-comment {
-    color: var(--bs-light);
+  color: var(--bs-light);
 }
 
 hr {
-    background-color: var(--bs-light);
+  background-color: var(--bs-light);
 }
 
 #createComment input[type="text"] {
-    border: none;
-    border-bottom: 1px solid var(--bs-light);
-    border-radius: unset;
-    background-color: var(--bs-dark-rgb);
-    color: var(--bs-light);
+  border: none;
+  border-bottom: 1px solid var(--bs-light);
+  border-radius: unset;
+  background-color: var(--bs-dark-rgb);
+  color: var(--bs-light);
+}
+
+/* Login styles */
+.login-shadow {
+  box-shadow: 10px 10px 50px -8px rgba(95, 100, 156, 1);
 }
 
 /* Media Queries */
 
 @media (min-width: 768px) {
-    .custom-rows {
-        justify-content: flex-start;
-    }
+  .custom-rows {
+    justify-content: flex-start;
+  }
 }

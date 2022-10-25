@@ -3,18 +3,6 @@ include_once "models/Comment.php";
 
 class CommentsController
 {
-    public function index()
-    {   
-        $data = json_decode(file_get_contents("php://input"));
-        if (!$data)
-        {
-            http_response_code(400);
-            exit;
-        }
-        $comments = Comment::all($data->id);
-        echo json_encode($comments);
-    }
-
     public function create()
     {
         // parsear la data del post
