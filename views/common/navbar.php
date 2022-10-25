@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Videoteca</a>
+        <a class="navbar-brand" href="/videos">Videoteca</a>
         <div class="d-flex">
             <form id="buscarVideo" class="d-flex">
                 <input id="buscarVideoInput" class="form-control me-2" type="search" placeholder="Buscar video" aria-label="Search">
