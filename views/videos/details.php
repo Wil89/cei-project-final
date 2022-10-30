@@ -41,7 +41,13 @@
                 <form id="createComment">
                     <input id="comment" type="text" class="form-control position-relative" placeholder="Comentario">
                     <p id="error-msg" class="position-absolute">El mensaje no puede estar vacío</p>
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <select class="form-select form-select-sm" name="user" id="user">
+                            <option value="" selected>Selecciona un usuario</option>
+                            <?php foreach ($users as $user) : ?>
+                                <option value="<?php echo $user->id ?>"><?php echo $user->userName ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <button type="button" class="btn btn-outline-light mt-3 mb-3" onclick='addComment("<?php echo ($video[0]->videoId); ?>")'>Comentar</button>
                     </div>
                 </form>

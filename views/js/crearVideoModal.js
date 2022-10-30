@@ -147,6 +147,7 @@ crearVideoModal = () => {
 const addComment = (id) => {
   const commentForm = document.querySelector("#createComment");
   const commentInput = document.querySelector("#comment");
+  const commentUser = document.querySelector("#user");
 
   // Mensaje Toast
   const toast = document.querySelector("#alert-toast");
@@ -160,13 +161,18 @@ const addComment = (id) => {
     modalValidacion.style.color = "red";
     modalValidacion.innerHTML = "Introduzca un comentario";
     return;
+  } else if (!commentUser.value) {
+    modalValidacion.style.display = "block";
+    modalValidacion.style.color = "red";
+    modalValidacion.innerHTML = "Seleccione un usuario";
+    return;
   }
 
   const data = {
     comment: commentInput.value,
     date: new Date().toISOString().slice(0, 19).replace("T", " "),
     videoId: parseInt(id),
-    userId: 2,
+    userId: parseInt(commentUser.value),
   };
 
   fetch("/comments/create", {

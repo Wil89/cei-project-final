@@ -100,6 +100,12 @@ hr {
   color: var(--bs-light);
 }
 
+.form-select {
+  width: 20%;
+  height: 38px;
+  margin-right: 8px;
+}
+
 /* Login styles */
 .login-shadow {
   box-shadow: 10px 10px 50px -8px rgba(95, 100, 156, 1);

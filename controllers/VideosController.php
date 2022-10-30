@@ -1,7 +1,7 @@
 <?php
 
 include_once "models/Video.php";
-
+include_once "models/User.php";
 class VideosController
 {
     public function index()
@@ -23,7 +23,8 @@ class VideosController
     public function details($id)
     {
         $video = Video::find($id);
-        view("videos.details", ["video" => $video]);
+        $users = User::all();
+        view("videos.details", ["video" => $video, "users"=> $users]);
         // echo json_encode($video);
     }
 
