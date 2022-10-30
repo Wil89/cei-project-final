@@ -15,19 +15,20 @@
     <div class="card login-shadow" style="width: 18rem;">
       <img src="/public/images/login-logo-2.png" alt="card-img-top">
       <div class="card-body p-3">
-        <form>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Nombre usuario">
+        <form id="createUserForm">
+          <!-- <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="Nombre usuario">
             <label for="floatingPassword">Nombre de Usuario</label>
-          </div>
+          </div> -->
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
             <label for="floatingInput">Email</label>
+            <p id="error-msg" class="position-absolute"></p>
           </div>
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+          <!-- <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Contraseña">
             <label for="floatingPassword">Contraseña</label>
-          </div>
+          </div> -->
           <div>
             <input type="submit" class="btn btn-outline-primary mt-4 w-100" value="Entrar">
           </div>
@@ -35,6 +36,7 @@
       </div>
     </div>
   </main>
+  <script defer src="views/js/crearUser.js"></script>
 </body>
 
 </html>

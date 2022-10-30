@@ -28,7 +28,7 @@ class UsersController
         $user->userName = $data->userName;
         $user->email = $data->email;
         // Evitar guardar el password literal en la db
-        $user->password = password_hash($data->password, PASSWORD_DEFAULT) ;
+        // $user->password = password_hash($data->password, PASSWORD_DEFAULT);
         $user->create();
         $response = $user;
         echo json_encode($response);

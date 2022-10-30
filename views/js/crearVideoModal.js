@@ -10,11 +10,29 @@ if (modalValidacion) {
 
 formBuscar.addEventListener("submit", (event) => {
   event.preventDefault();
-  const url = `/videos/index/${inputBuscar.value}`;
-  window.location.href = url;
+  const url = `/videos/search`;
+  // window.location.href = url;
   // console.log(url);
-  // fetch(url).then((response) => response.json())
-  // .then(data => console.log(data));
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ filter: inputBuscar.value }),
+    headers: {
+      "Content-Type": "text/html",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.text();
+        // console.log(response);
+        // document.implementation.createHTMLDocument(response);
+      }
+    })
+    .then((html) => {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, "text/html");
+      document.body.innerHTML = html;
+      console.log(doc);      
+    });
 });
 
 crearVideoModal = () => {

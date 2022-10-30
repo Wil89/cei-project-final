@@ -9,18 +9,18 @@ class Video extends DB
     public $videoUrl;
     public $postDate;
 
-    public static function all($filtro)
+    public static function all()
     {
         $db = new DB();
-        $consulta = '';
-        if ($filtro) {
-            $consulta = "SELECT * FROM Video WHERE name LIKE '%${$filtro}%'";
-        } else {
-            $consulta = "SELECT * FROM Video";
-        }
-        // $consulta = "SELECT * FROM Video";
-        // echo $consulta;
+        $consulta = "SELECT * FROM Video";
         $prepare = $db->prepare($consulta);
+        $prepare->execute();
+        return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
+    }
+
+    public static function search($filter) {
+        $db = new DB();
+        $prepare = $db->prepare("SELECT * FROM Video WHERE name LIKE '%$filter%'");
         $prepare->execute();
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }

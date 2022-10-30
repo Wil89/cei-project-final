@@ -4,19 +4,26 @@ include_once "models/Video.php";
 
 class VideosController
 {
-    public function index($filtro)
-    {   
-        echo $filtro;
+    public function index()
+    {
+        $videos = Video::all();
+        view("videos.index", ["videos" => $videos]);
+    }
 
-        $videos = Video::all($filtro);
-        view("videos.index", ["videos"=> $videos]);
-        // echo json_encode($videos);
+    public function search()
+    {   
+        $filter = json_decode(file_get_contents("php://input"));
+        // var_dump($_SERVER['QUERY_STRING']);
+        $videos = Video::search($filter->filter);
+        // var_dump($videos);
+        // return json_encode($videos);
+        return view("videos.index", ["videos" => $videos]);
     }
 
     public function details($id)
     {
         $video = Video::find($id);
-        view("videos.details", ["video"=> $video]);
+        view("videos.details", ["video" => $video]);
         // echo json_encode($video);
     }
 
@@ -32,9 +39,8 @@ class VideosController
 
         // Evitar videos repetidos
         $videos = Video::all(null);
-        foreach($videos as $video)
-        {
-            if($video->videoUrl == $data->videoUrl){
+        foreach ($videos as $video) {
+            if ($video->videoUrl == $data->videoUrl) {
                 http_response_code(400);
                 exit;
             }
@@ -73,9 +79,10 @@ class VideosController
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $video = Video::find($id);
-        if(!$video) {
+        if (!$video) {
             http_response_code(400);
             exit;
         }
