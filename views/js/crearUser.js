@@ -12,7 +12,7 @@ if (createUser) {
 
     const email = emailInput.value;
 
-    if (!email || !email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    if (!email || !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
       errorValidator.style.display = "block";
       errorValidator.style.color = "red";
       errorValidator.innerHTML = "Revise el campo email";
