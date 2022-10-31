@@ -24,6 +24,15 @@ class UsersController
             http_response_code(400);
             exit;
         }
+
+        $users = User::all();
+        // Si el usuario exite no crearlo de nuevo
+        foreach($users as $user) {
+            if($user->email == $data->email) {
+                return json_encode($user);
+            }
+        }
+
         $user = new User();
         $user->userName = $data->userName;
         $user->email = $data->email;
@@ -31,6 +40,6 @@ class UsersController
         // $user->password = password_hash($data->password, PASSWORD_DEFAULT);
         $user->create();
         $response = $user;
-        echo json_encode($response);
+        return json_encode($response);
     }
 }

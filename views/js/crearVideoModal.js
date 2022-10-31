@@ -31,7 +31,7 @@ formBuscar.addEventListener("submit", (event) => {
       var parser = new DOMParser();
       var doc = parser.parseFromString(html, "text/html");
       document.body.innerHTML = html;
-      console.log(doc);      
+      console.log(doc);
     });
 });
 
@@ -49,6 +49,16 @@ crearVideoModal = () => {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <div class="content">
+                <h6>Como copiar un video de YouTube</h6>
+                <ol>
+                  <li>Buscar video deseado en YouTube</li>
+                  <li>Click derecho <strong> Copy embeded code </strong></li>
+                  <li>Pegar contenido en el dialogo de texto</li>
+                </ol>
+                <img src="/public/images/guia-2.png" />
+
+              </div>
                 <form id="formGuardar">
                     <div class="form-floating mb-3">
                         <input

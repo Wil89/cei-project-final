@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container-fluid flex-nowrap">
         <a class="navbar-brand" href="/videos">
-            <!-- <img src="/public/images/navbar-logo.jpg" alt=""> -->
+            <img src="/public/images/logo_transparent.png" alt="">
         </a>
         <div class="d-flex">
             <form id="buscarVideo" class="d-flex">
@@ -12,7 +12,7 @@
             </form>
             <button class="btn btn-outline-light ms-2" onclick="crearVideoModal()">
                 <i class="bi bi-cloud-upload"></i>
-                Subir Video
+                Subir
             </button>
         </div>
 

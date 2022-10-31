@@ -24,6 +24,7 @@ class VideosController
     {
         $video = Video::find($id);
         $users = User::all();
+        // var_dump($video);
         view("videos.details", ["video" => $video, "users"=> $users]);
         // echo json_encode($video);
     }

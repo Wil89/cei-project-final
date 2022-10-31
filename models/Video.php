@@ -28,7 +28,7 @@ class Video extends DB
     public static function find($id)
     {
         $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.videoId = c.Video_id WHERE v.videoId=:id");
+        $prepare = $db->prepare("SELECT * FROM Video AS v LEFT JOIN Comment AS c ON v.videoId = c.Video_id LEFT JOIN User as u ON c.User_id = u.id WHERE v.videoId=:id");
         $prepare->execute([":id" => $id]);
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }

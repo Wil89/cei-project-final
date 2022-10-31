@@ -41,7 +41,7 @@
                 <form id="createComment">
                     <input id="comment" type="text" class="form-control position-relative" placeholder="Comentario">
                     <p id="error-msg" class="position-absolute">El mensaje no puede estar vacío</p>
-                    <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex justify-content-end align-items-center mt-3">
                         <select class="form-select form-select-sm" name="user" id="user">
                             <option value="" selected>Selecciona un usuario</option>
                             <?php foreach ($users as $user) : ?>
@@ -55,7 +55,8 @@
                 <?php foreach ($video as $v) : ?>
                     <?php
                     if ($v->comment) {
-                        echo "<p class='user-comment'><i class='bi bi-person-circle me-2'></i>$v->comment</p>";
+                        echo "<p class='user-comment-logo'><i class='bi bi-person-circle me-2'></i>$v->userName</p>";
+                        echo "<p class='user-comment'>$v->comment</p>";
                     }
 
                     ?>
