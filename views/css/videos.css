@@ -79,6 +79,10 @@
   object-fit: contain;
 }
 
+.btn-subir {
+  margin-top: 1rem;
+}
+
 /* Detail page styles */
 .details-header {
   color: var(--bs-light);
@@ -143,5 +147,14 @@ hr {
 
   .form-select {
     width: 20%;
+  }
+
+  
+}
+
+@media (min-width: 992px) {
+  .btn-subir {
+    margin-top: 0;
+    margin-left: 0.5rem;
   }
 }
