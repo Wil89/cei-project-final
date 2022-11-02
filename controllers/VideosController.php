@@ -4,12 +4,16 @@ include_once "models/Video.php";
 include_once "models/User.php";
 class VideosController
 {
+    // Controller para la ruta /videos
+    // donde se mostraran todos los videos
     public function index()
     {
         $videos = Video::all();
         view("videos.index", ["videos" => $videos]);
     }
 
+    // Controller para filtrar los videos por nombre
+    // y actualizar la vista /videos
     public function search()
     {   
         $filter = json_decode(file_get_contents("php://input"));
@@ -17,6 +21,9 @@ class VideosController
         return view("videos.index", ["videos" => $videos]);
     }
 
+    // Controller para la ruta /videos/{id}
+    // Mostrar los detalles de un video, sus comentarios 
+    // Se cargan los usuarios para asociarlos a los comentarios
     public function details($id)
     {
         $video = Video::find($id);
@@ -24,6 +31,7 @@ class VideosController
         view("videos.details", ["video" => $video, "users"=> $users]);
     }
 
+    // Controller para crear un nuevo video si este no existe
     public function create()
     {
         // parsear la data del post
@@ -52,7 +60,7 @@ class VideosController
         echo json_encode($response);
     }
 
-
+    // Controller para eliminar un video, actualmente no se usa esta funcionalidad
     public function delete($id)
     {
         $video = Video::find($id);

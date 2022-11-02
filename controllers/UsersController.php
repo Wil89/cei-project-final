@@ -3,7 +3,7 @@ include_once "models/User.php";
 
 class UsersController
 {
-    
+    // Controller para crear un nuevo usuario si este no existe   
     public function create()
     {
         // parsear la data del post
@@ -25,8 +25,6 @@ class UsersController
         $user = new User();
         $user->userName = $data->userName;
         $user->email = $data->email;
-        // Evitar guardar el password literal en la db
-        // $user->password = password_hash($data->password, PASSWORD_DEFAULT);
         $user->create();
         $response = $user;
         return json_encode($response);
