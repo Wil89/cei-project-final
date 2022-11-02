@@ -8,15 +8,17 @@ class Video extends DB
     public $videoUrl;
     public $postDate;
 
+    // Consulta para mostrar todos los videos en orden descendente
     public static function all()
     {
         $db = new DB();
-        $consulta = "SELECT * FROM Video";
+        $consulta = "SELECT * FROM Video ORDER BY postDate DESC";
         $prepare = $db->prepare($consulta);
         $prepare->execute();
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
+    // Consulta para filtrar los videos
     public static function search($filter) {
         $db = new DB();
         $prepare = $db->prepare("SELECT * FROM Video WHERE name LIKE '%$filter%'");
@@ -24,6 +26,8 @@ class Video extends DB
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
+    // Consulta para ver un video especifico (id) con los comentarios 
+    // asociados a este video y los usuarios que realizaron el comentario
     public static function find($id)
     {
         $db = new DB();
@@ -32,6 +36,8 @@ class Video extends DB
         return $prepare->fetchAll(PDO::FETCH_CLASS, Video::class);
     }
 
+    // Consulta para crear un nuevo video o editar uno existente, 
+    // actualmente no se esta usando la opcion de editar
     public function save()
     {
         $params = [
@@ -54,6 +60,8 @@ class Video extends DB
         }
     }
 
+    // Consulta para eliminar un video, 
+    // actualmente no se esta usando
     public function remove()
     {
         $prepare = $this->prepare("DELETE FROM Video WHERE id=:id");
