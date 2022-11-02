@@ -13,10 +13,7 @@ class VideosController
     public function search()
     {   
         $filter = json_decode(file_get_contents("php://input"));
-        // var_dump($_SERVER['QUERY_STRING']);
         $videos = Video::search($filter->filter);
-        // var_dump($videos);
-        // return json_encode($videos);
         return view("videos.index", ["videos" => $videos]);
     }
 
@@ -24,9 +21,7 @@ class VideosController
     {
         $video = Video::find($id);
         $users = User::all();
-        // var_dump($video);
         view("videos.details", ["video" => $video, "users"=> $users]);
-        // echo json_encode($video);
     }
 
     public function create()
@@ -58,28 +53,6 @@ class VideosController
         echo json_encode($response);
     }
 
-    public function update($id)
-    {
-        $data = json_decode(file_get_contents("php://input"));
-        if (!$data) {
-            // Bad Request
-            http_response_code(400);
-            exit;
-        }
-        $video = Video::find($id);
-        if ($video) {
-            $video[0]->name = $data->name;
-            $video[0]->imagenUrl = $data->imagenUrl;
-            $video[0]->videoUrl = $data->videoUrl;
-            $video[0]->postDate = $data->postDate;
-            $video[0]->save();
-            $response = $video;
-            echo json_encode($response);
-        } else {
-            http_response_code(400);
-            exit;
-        }
-    }
 
     public function delete($id)
     {

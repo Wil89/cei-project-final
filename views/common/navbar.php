@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid flex-nowrap">
         <a class="navbar-brand" href="/videos"><img src="/public/images/logo_transparent.png" alt="logo"></a>

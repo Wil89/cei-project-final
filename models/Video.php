@@ -5,7 +5,6 @@ class Video extends DB
 {
     public $videoId;
     public $name;
-    public $imagenUrl;
     public $videoUrl;
     public $postDate;
 
@@ -38,12 +37,11 @@ class Video extends DB
         $params = [
             ":name" => $this->name,
             ":postDate" => $this->postDate,
-            ":imagenUrl" => $this->imagenUrl,
             ":videoUrl" => $this->videoUrl,
         ];
         // Si no esta presente el id, es que estamos creando un nuevo video
         if (empty($this->id)) {
-            $prepare = $this->prepare("INSERT INTO Video(name, imagenUrl, videoUrl, postDate) VALUES (:name, :imagenUrl, :videoUrl, :postDate)");
+            $prepare = $this->prepare("INSERT INTO Video(name, videoUrl, postDate) VALUES (:name, :videoUrl, :postDate)");
             $prepare->execute($params);
             $prepare2 = $this->prepare("SELECT MAX(id) id FROM Video");
             $prepare2->execute();
@@ -51,7 +49,7 @@ class Video extends DB
         } else {
             //  Si esta presente el id, entonces es un update
             $params[":id"] = $this->id;
-            $prepare = $this->prepare("UPDATE Video SET name=:name, imagenUrl=:imagenUrl, videoUrl=:videoUrl, postDate=:postDate WHERE id=:id");
+            $prepare = $this->prepare("UPDATE Video SET name=:name, videoUrl=:videoUrl, postDate=:postDate WHERE id=:id");
             $prepare->execute($params);
         }
     }

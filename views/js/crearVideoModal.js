@@ -71,7 +71,7 @@ crearVideoModal = () => {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btn-subir">Subir Video</button>
+                <button id="btn-subir" type="button" class="btn btn-primary">Subir Video</button>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@ crearVideoModal = () => {
   const name = document.querySelector("#name");
   const videoUrl = document.querySelector("#videoUrl");
 
-  const actionBtn = document.querySelector(".btn-subir");
+  const actionBtn = document.querySelector("#btn-subir");
 
   // Escuchar evento de click para subir video
   actionBtn.addEventListener("click", () => {
