@@ -3,18 +3,7 @@ include_once "models/User.php";
 
 class UsersController
 {
-    public function index()
-    {
-        $users = User::all();
-        echo json_encode($users);
-    }
-
-    public function details($id)
-    {
-        $user = user::find($id);
-        echo json_encode($user);
-    }
-
+    
     public function create()
     {
         // parsear la data del post

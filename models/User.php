@@ -16,14 +16,6 @@ class User extends DB
         return $prepare->fetchAll(PDO::FETCH_CLASS, User::class);
     }
 
-    public static function find($id)
-    {
-        $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM User WHERE id=:id");
-        $prepare->execute([":id" => $id]);
-        return $prepare->fetchObject(User::class);
-    }
-
     public function create()
     {
         $params = [
