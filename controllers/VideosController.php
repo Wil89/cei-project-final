@@ -35,7 +35,7 @@ class VideosController
         }
 
         // Evitar videos repetidos
-        $videos = Video::all(null);
+        $videos = Video::all();
         foreach ($videos as $video) {
             if ($video->videoUrl == $data->videoUrl) {
                 http_response_code(400);
@@ -45,7 +45,6 @@ class VideosController
 
         $video = new Video();
         $video->name = $data->name;
-        $video->imagenUrl = $data->imagenUrl;
         $video->videoUrl = $data->videoUrl;
         $video->postDate = $data->postDate;
         $video->save();
