@@ -11,30 +11,6 @@ class Comment extends DB
     public $Video_id;
     public $User_id;
 
-    // Search all comments by video id
-    public static function all($videoId)
-    {
-        $db = new DB();
-        // $prepare = $db->prepare("SELECT * FROM Comment AS c LEFT JOIN Video AS v ON c.Video_id=v.id WHERE c.Video_id NOT NULL");
-        $prepare = $db->prepare("SELECT * FROM Comments WHERE Video_id=:videoId");
-        $prepare->execute([":videoId" => $videoId]);
-        return $prepare->fetchAll(PDO::FETCH_CLASS, Comment::class);
-    }
-
-    public static function find($id)
-    {
-        $db = new DB();
-        $prepare = $db->prepare("SELECT * FROM Comment WHERE id=:id");
-        $prepare->execute([":id" => $id]);
-        return $prepare->fetchObject(Comment::class);
-    }
-
-    public function remove()
-    {
-        $prepare=$this->prepare("DELETE FROM Comment WHERE id=:id");
-        $prepare->execute([":id" => $this->id]);
-    }
-
     public function save()
     {
         $params = [

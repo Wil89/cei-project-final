@@ -36,7 +36,7 @@
                   <?php echo $video->videoUrl ?>
                 </div>
                 <a class="overlay" href="videos/details/<?php echo $video->videoId; ?>"></a>
-                <div class="row align-items-start">
+                <div class="row align-items-start mt-2">
                   <p class="ellipsis"><?php echo $video->name ?></p>
                 </div>
               </div>
