@@ -1,7 +1,5 @@
 <?php
 
-
-// NO OLVIDAR METER ESTE FICHERO EN EL ROUTER
 if (!function_exists("view")) {    
     
     function view($nombreVista, $params)

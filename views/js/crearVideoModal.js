@@ -7,12 +7,11 @@ const modalValidacion = document.querySelector("#error-msg");
 if (modalValidacion) {
   modalValidacion.style.display = "none";
 }
-
+// Evento para buscar un video
 formBuscar.addEventListener("submit", (event) => {
   event.preventDefault();
   const url = `/videos/search`;
-  // window.location.href = url;
-  // console.log(url);
+  
   fetch(url, {
     method: "POST",
     body: JSON.stringify({ filter: inputBuscar.value }),
@@ -22,19 +21,17 @@ formBuscar.addEventListener("submit", (event) => {
   })
     .then((response) => {
       if (response.ok) {
+        // Se envia un el HTML con los videos desde el servidor
         return response.text();
-        // console.log(response);
-        // document.implementation.createHTMLDocument(response);
       }
     })
     .then((html) => {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(html, "text/html");
+      // Mostar el HTML en el DOM
       document.body.innerHTML = html;
-      console.log(doc);
     });
 });
 
+// Modal para crear un Video
 crearVideoModal = () => {
   if (modalContainer !== null) {
     modalContainer.remove();
@@ -153,7 +150,7 @@ crearVideoModal = () => {
   });
 };
 
-// Submit de creación de usuario
+// Creación de comentario
 const addComment = (id) => {
   const commentForm = document.querySelector("#createComment");
   const commentInput = document.querySelector("#comment");
@@ -163,8 +160,6 @@ const addComment = (id) => {
   const toast = document.querySelector("#alert-toast");
   const toastBody = document.querySelector(".toast-body");
   const toastMsg = new bootstrap.Toast(toast);
-
-  console.log(`Enviar ${commentInput.value} con id ${id}`);
 
   if (!commentInput.value) {
     modalValidacion.style.display = "block";
@@ -178,6 +173,8 @@ const addComment = (id) => {
     return;
   }
 
+  // Crear el objeto comentario para el fetch
+  // relación con video y usuario
   const data = {
     comment: commentInput.value,
     date: new Date().toISOString().slice(0, 19).replace("T", " "),
@@ -194,7 +191,6 @@ const addComment = (id) => {
   })
     .then((response) => {
       if (response.ok) {
-        console.log(response);
         window.location.reload();
         toastBody.innerHTML = "Video subido satisfactoriamente.";
         toastMsg.show();

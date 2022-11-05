@@ -1,6 +1,6 @@
 <?php
 
-// Clase para manejar la conexion con la BD
+// Clase Padre para manejar la conexion con la BD
 class DB extends PDO
 {
     public function __construct()
