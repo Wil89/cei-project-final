@@ -1,6 +1,7 @@
 <?php
 
 // Clase Padre para manejar la conexion con la BD
+// hereda de PDO
 class DB extends PDO
 {
     public function __construct()

@@ -3,6 +3,7 @@ include_once "utils/defaults.php";
 include_once "models/DB.php";
 include_once "models/Video.php";
 
+// Estructura de las URLs controlador/action/id
 $controller=ucfirst($_GET['controller']);
 $action = $_GET['action'];
 $id = $_GET['id'];
